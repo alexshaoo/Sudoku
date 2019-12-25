@@ -33,6 +33,8 @@ public class Sudoku extends JFrame {
 				  		  {true , false, true , true , true , false, false, false, false}
 				  		  };
 	
+	GameBoardButton[][] gameBoardButtons = new GameBoardButton[9][9];
+	
 	// Integer player is currently entering / has stored
 	int valueStored;
 	
@@ -64,9 +66,9 @@ public class Sudoku extends JFrame {
 	
 	// Check to see if puzzle is solved by comparing 
 	// the values that each button is supposed to display with the actual value that the button displays
-	public boolean isSolved(GameBoardButton[][] buttons) {
+	public boolean isSolved() {
 		boolean isMatching = true;
-		for (GameBoardButton[] buttonRow: buttons) {
+		for (GameBoardButton[] buttonRow: gameBoardButtons) {
 			for (GameBoardButton button: buttonRow) {
 				if (button.value != button.valueShown) {
 					isMatching = false;
@@ -77,7 +79,7 @@ public class Sudoku extends JFrame {
 	}
 	
 	public Sudoku() {
-		super("Sudoku");
+		super("Sukudo");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 		

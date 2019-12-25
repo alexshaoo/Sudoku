@@ -7,9 +7,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class GameBoardButton extends JButton {
-	
-	JButton[][] buttons = new JButton[9][9];
-	
 	// Actual value
 	int value;
 	
@@ -24,20 +21,18 @@ public class GameBoardButton extends JButton {
 		this.setPreferredSize(new Dimension(30, 30));
 		this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		this.setBackground(Color.WHITE);
-		
-		// Store buttons in 2D list
-		buttons[row][column] = this;
-		
 		this.value = value;
 		this.isShown = isShown;
 		
-		// Show buttons if corresponding boolean is true
+		//
+		game.gameBoardButtons[row][column] = this;
+		
+		// The button is shown if the boolean is true
 		if (isShown) {
 			this.setText(Integer.toString(value));
 			valueShown = value;
 		}
 		
-		// Add actionListener
 		this.addActionListener(new MouseClickHandler(game));
 	}
 	
@@ -50,9 +45,4 @@ public class GameBoardButton extends JButton {
 		valueShown = newValue;
 		button.setText(Integer.toString(newValue));
 	}
-	
-	public JButton[][] getButtons() {
-		return buttons;
-	}
-	
 }

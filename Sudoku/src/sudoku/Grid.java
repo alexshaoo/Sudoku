@@ -13,6 +13,7 @@ public class Grid extends JPanel {
 	public Grid(int[][] solved, boolean[][] isShown, int gridRow, int gridColumn, Sudoku game) {
 		super();
 		
+		// Grid is each box of numbers from 1 - 9; is a 3x3 layout
 		this.setLayout(new GridLayout(3, 3));
 		
 		// Passing in value stored in each button to Button constructor

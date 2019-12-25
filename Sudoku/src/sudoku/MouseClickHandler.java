@@ -29,8 +29,10 @@ public class MouseClickHandler implements ActionListener {
 				boardButton.setDisplayedValue(boardButton, game.getValueStored());
 			}
 			
-			// TODO: Every time a 'move' is made, check to see if the board is fully solved
-			//game.isSolved(what.getButtons());
+			// Checks if the puzzle is solved
+			if (game.isSolved()) {
+				System.out.println("Will look into more visual ways later...");
+			}
 			
 		// Change stored value based on number clicked on in numberPad
 		} else if (buttonSelected instanceof NumberPadButton) {
