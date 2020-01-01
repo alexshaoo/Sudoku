@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class GameBoardButton extends JButton {
+	
 	// Actual value
 	int value;
 	
@@ -21,10 +22,12 @@ public class GameBoardButton extends JButton {
 		this.setPreferredSize(new Dimension(30, 30));
 		this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		this.setBackground(Color.WHITE);
+		
+		// So the button knows its own value
 		this.value = value;
 		this.isShown = isShown;
 		
-		//
+		// Sets array containing board buttons at each row and column to the corresponding button
 		game.gameBoardButtons[row][column] = this;
 		
 		// The button is shown if the boolean is true
@@ -33,6 +36,7 @@ public class GameBoardButton extends JButton {
 			valueShown = value;
 		}
 		
+		// Button knows when a click registers
 		this.addActionListener(new MouseClickHandler(game));
 	}
 	

@@ -19,15 +19,18 @@ public class Grid extends JPanel {
 		// Passing in value stored in each button to Button constructor
 		for (int row = 0; row < 3; row++) {
 			for (int column = 0; column < 3; column++) {
-				GameBoardButton button = new GameBoardButton(solved[3 * gridRow + row][3 * gridColumn + column], 
-										isShown[3 * gridRow + row][3 * gridColumn + column], 
-										3 * gridRow + row, 3 * gridColumn + column, game);
+				
+				// Creates and adds a button to the grid
+				int rowIndex = 3 * gridRow + row;
+				int columnIndex = 3* gridColumn + column;
+				GameBoardButton button = new GameBoardButton(solved[rowIndex][columnIndex], 
+										isShown[rowIndex][columnIndex], rowIndex, columnIndex, game);
 				
 				this.add(button);
 			}
 		}
+		
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.setVisible(true);
 	}
-	
 }

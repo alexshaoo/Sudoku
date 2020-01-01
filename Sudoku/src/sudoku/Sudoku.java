@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 public class Sudoku extends JFrame {
 	
+	// Solved puzzle in array format
 	int[][] solved = {	
 			 		 {1, 6, 8, 7, 2, 5, 9, 3, 4}, 
 			 		 {7, 9, 3, 6, 4, 8, 2, 1, 5}, 
@@ -21,6 +22,7 @@ public class Sudoku extends JFrame {
 			 		 {2, 8, 1, 3, 5, 6, 4, 7, 9}
 			 		 };
 
+	// Boolean array of which numbers to show at the start of a game
 	boolean[][] isShown = {
 				  		  {false, false, false, false, true , true , true , false, true }, 
 				  		  {false, false, true , true , false, false, false, true , true }, 
@@ -33,6 +35,7 @@ public class Sudoku extends JFrame {
 				  		  {true , false, true , true , true , false, false, false, false}
 				  		  };
 	
+	// 2D array of GameBoardButtons
 	GameBoardButton[][] gameBoardButtons = new GameBoardButton[9][9];
 	
 	// Integer player is currently entering / has stored
@@ -47,7 +50,7 @@ public class Sudoku extends JFrame {
 	}
 	
 	// Prints puzzle in grid form
-	public static void printBoard(int[][] arr, boolean[][] shown) {
+	public void printBoard(int[][] arr, boolean[][] shown) {
 		System.out.println("-------------------------------------");
 		for (int row = 0; row < 9; row++) {
 			System.out.print("| ");
@@ -64,8 +67,7 @@ public class Sudoku extends JFrame {
 		}
 	}
 	
-	// Check to see if puzzle is solved by comparing 
-	// the values that each button is supposed to display with the actual value that the button displays
+	// Check to see if puzzle is solved by comparing each entered value with their correct values
 	public boolean isSolved() {
 		boolean isMatching = true;
 		for (GameBoardButton[] buttonRow: gameBoardButtons) {
@@ -81,6 +83,8 @@ public class Sudoku extends JFrame {
 	public Sudoku() {
 		super("Sukudo");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		// Formatted so can use directions to place components fittingly
 		this.setLayout(new BorderLayout());
 		
 		// JPanel that holds all game board's buttons
@@ -107,16 +111,17 @@ public class Sudoku extends JFrame {
 		
 		// Adding panels and buttons to frame, setting padding
 		this.add(numberPad, BorderLayout.EAST);
-		this.add(container, BorderLayout.WEST);
+		this.add(container, BorderLayout.CENTER);
 		this.add(new ClearValueButton(this), BorderLayout.SOUTH);
 		container.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		numberPad.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
+		// Pack contents to fit frame
+		this.pack();
+		
 		container.setVisible(true);
 		numberPad.setVisible(true);
 		this.setVisible(true);
-		
-		this.pack();
 	}
 	
 	public static void main(String[] args) {

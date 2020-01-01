@@ -6,13 +6,14 @@ import javax.swing.JButton;
 
 public class NumberPadButton extends JButton {
 	
-	// Integer attribute, stores number shown
-	// TODO: this variable name also sucks
-	int numberOnNumberPad;
+	// Integer attribute, stores number shown on numberpad
+	int number;
 	
 	public NumberPadButton(int number, Sudoku game) {
 		super();
-		this.numberOnNumberPad = number;
+		
+		// Knows its own value so it can return it
+		this.number = number;
 		this.setPreferredSize(new Dimension(50, 50));
 		this.addActionListener(new MouseClickHandler(game));
 		this.setText(Integer.toString(number));
@@ -20,6 +21,6 @@ public class NumberPadButton extends JButton {
 	}
 	
 	public int getNumberSelected() {
-		return numberOnNumberPad;
+		return number;
 	}
 }
