@@ -39,7 +39,7 @@ public class Sudoku extends JFrame {
 	GameBoardButton[][] gameBoardButtons = new GameBoardButton[9][9];
 	
 	// Integer player is currently entering / has stored
-	int valueStored;
+	private int valueStored;
 	
 	public int getValueStored() {
 		return valueStored;
@@ -72,7 +72,7 @@ public class Sudoku extends JFrame {
 		boolean isMatching = true;
 		for (GameBoardButton[] buttonRow: gameBoardButtons) {
 			for (GameBoardButton button: buttonRow) {
-				if (button.value != button.valueShown) {
+				if (button.getValue() != button.getValueShown()) {
 					isMatching = false;
 				}
 			}

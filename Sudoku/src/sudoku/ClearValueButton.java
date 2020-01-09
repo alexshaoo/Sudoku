@@ -18,7 +18,7 @@ public class ClearValueButton extends JButton {
 	}
 	
 	// Turns value into -1; will clear value to empty string later
-	public void clearValue() {
-		game.valueStored = -1;
+	public void setClearValue() {
+		game.setValueStored(-1);
 	}
 }

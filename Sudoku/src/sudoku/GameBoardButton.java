@@ -9,13 +9,25 @@ import javax.swing.JButton;
 public class GameBoardButton extends JButton {
 	
 	// Actual value
-	int value;
+	private int value;
+	
+	public int getValue() {
+		return value;
+	}
 	
 	// For when number is given when game starts
-	boolean isShown;
+	private boolean isShown;
+	
+	public boolean getIsShown() {
+		return isShown;
+	}
 	
 	// Integer actually shown on button
-	int valueShown;
+	private int valueShown;
+	
+	public int getValueShown() {
+		return valueShown;
+	}
 	
 	public GameBoardButton(int value, boolean isShown, int row, int column, Sudoku game) {
 		super();
@@ -38,10 +50,6 @@ public class GameBoardButton extends JButton {
 		
 		// Button knows when a click registers
 		this.addActionListener(new MouseClickHandler(game));
-	}
-	
-	public int getValueShown() {
-		return valueShown;
 	}
 	
 	// Sets value shown on button based on value stored
