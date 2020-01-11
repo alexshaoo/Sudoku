@@ -22,7 +22,7 @@ public class Sudoku extends JFrame {
 			 		 {2, 8, 1, 3, 5, 6, 4, 7, 9}
 			 		 };
 
-	// Boolean array of which numbers to show at the start of a game
+	// Boolean array of which numbers are shown at the start of a game
 	boolean[][] isShown = {
 				  		  {false, false, false, false, true , true , true , false, true }, 
 				  		  {false, false, true , true , false, false, false, true , true }, 
@@ -35,8 +35,16 @@ public class Sudoku extends JFrame {
 				  		  {true , false, true , true , true , false, false, false, false}
 				  		  };
 	
-	// 2D array of GameBoardButtons
+	// 2D array of GameBoardButtons (buttons that display the sudoku)
 	GameBoardButton[][] gameBoardButtons = new GameBoardButton[9][9];
+	
+	public GameBoardButton[][] getGameBoardButtons() {
+		return gameBoardButtons;
+	}
+	
+	public void setGameBoardButton(int row, int column, GameBoardButton newButton) {
+		gameBoardButtons[row][column] = newButton;
+	}
 	
 	// Integer player is currently entering / has stored
 	private int valueStored;
@@ -55,7 +63,9 @@ public class Sudoku extends JFrame {
 		for (int row = 0; row < 9; row++) {
 			System.out.print("| ");
 			for (int column = 0; column < 9; column++) {
-				if (shown[row][column] == true) {
+				
+				// Prints values ONLY if corresponding boolean is true
+				if (shown[row][column]) {
 					System.out.print(arr[row][column]);
 				} else {
 					System.out.print(" ");
@@ -67,8 +77,10 @@ public class Sudoku extends JFrame {
 		}
 	}
 	
-	// Check to see if puzzle is solved by comparing each entered value with their correct values
+	// Check to see if game is finished by comparing each value shown with their actual values
 	public boolean isSolved() {
+		
+		// Uses a boolean flag
 		boolean isMatching = true;
 		for (GameBoardButton[] buttonRow: gameBoardButtons) {
 			for (GameBoardButton button: buttonRow) {
@@ -87,11 +99,13 @@ public class Sudoku extends JFrame {
 		// Formatted so can use directions to place components fittingly
 		this.setLayout(new BorderLayout());
 		
-		// JPanel that holds all game board's buttons
+		// JPanel that holds all gameBoard's buttons
 		JPanel container = new JPanel();
+		
+		// Set to a 3x3 layout
 		container.setLayout(new GridLayout(3, 3));
 		
-		// 3x3 array of JPanels
+		// 3x3 array of JPanels (NOT the JButtons that display each number; the grids of 9 numbers each!)
 		JPanel[][] grids = new JPanel[3][3];
 		for (int row = 0; row < 3; row++) {
 			for (int column = 0; column < 3; column++) {
@@ -101,7 +115,7 @@ public class Sudoku extends JFrame {
 			}
 		}
 		
-		// JPanel that holds the numberPad, from 1 - 9
+		// JPanel that holds the 3x3 numberPad, from 1 - 9
 		JPanel numberPad = new JPanel();
 		numberPad.setLayout(new GridLayout(3, 3));
 		for (int number = 1; number < 10; number++) {
@@ -109,7 +123,7 @@ public class Sudoku extends JFrame {
 			
 		}
 		
-		// Adding panels and buttons to frame, setting padding
+		// Adding panels and buttons to frame, setting padding around borders
 		this.add(numberPad, BorderLayout.EAST);
 		this.add(container, BorderLayout.CENTER);
 		this.add(new ClearValueButton(this), BorderLayout.SOUTH);
@@ -127,5 +141,4 @@ public class Sudoku extends JFrame {
 	public static void main(String[] args) {
 		Sudoku game = new Sudoku();
 	}
-
 }

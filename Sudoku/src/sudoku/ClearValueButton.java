@@ -11,13 +11,14 @@ public class ClearValueButton extends JButton {
 	public ClearValueButton(Sudoku game) {
 		super();
 		this.game = game;
+		
 		this.setPreferredSize(new Dimension(150, 30));
 		this.setText("Clear");
 		this.addActionListener(new MouseClickHandler(game));
 		this.setVisible(true);
 	}
 	
-	// Turns value into -1; will clear value to empty string later
+	// Sets stored value to -1, a value that notifies MouseClickHander to clear text shown on game board buttons
 	public void setClearValue() {
 		game.setValueStored(-1);
 	}
